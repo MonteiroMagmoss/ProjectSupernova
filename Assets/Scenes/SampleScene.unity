@@ -410,6 +410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   starterHealth: 100
+  damage: 50
+  currenHealth: 0
 --- !u!4 &324344776 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 06ca53d70fd584e40872eb6c0d87a4a2, type: 3}
@@ -831,6 +833,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   starterHealth: 100
+  damage: 10
+  currenHealth: 0
 --- !u!1001 &1352536573
 PrefabInstance:
   m_ObjectHideFlags: 0

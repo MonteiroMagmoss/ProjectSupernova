@@ -4,7 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] int starterHealth = 100;
-    
+    [SerializeField] int damage = 10;
 
     [SerializeField] int currenHealth;
 
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     {
         if(other.CompareTag(ENEMY_TAG))
         {
-            currenHealth -= 10;
+            currenHealth -= damage;
             Debug.Log(currenHealth);
         }
     }
