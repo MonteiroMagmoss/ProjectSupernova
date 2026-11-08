@@ -1,11 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] int starterHealth = 100;
     [SerializeField] int damage = 10;
-
+    [SerializeField] float damageTime = .5f;
+    [SerializeField] GameObject damageScreen;
     [SerializeField] int currenHealth;
 
     const string ENEMY_TAG = "Enemy";
@@ -35,6 +37,13 @@ public class Player : MonoBehaviour
         {
             currenHealth -= damage;
             Debug.Log(currenHealth);
+            damageScreen.SetActive(true);
+            StartCoroutine(DisableScreenDamage(damageTime));
         }
+    }
+    IEnumerator DisableScreenDamage(float time)
+    {
+        yield return new WaitForSeconds(time);
+        damageScreen.SetActive(false);
     }
 }
