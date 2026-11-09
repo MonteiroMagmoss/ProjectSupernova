@@ -35,3 +35,5 @@ inimiga que ameaça a ordem e a segurança de dentro do sistema do jogador
 sistemas para fortalecer sua economia e império, além de interagir com outras civilizações 
 através de comércio, diplomacia ou travando guerras. Após interagir com o primeiro 
 império estelar, o tutorial será finalizado. 
+
+## Criando uma civilização
