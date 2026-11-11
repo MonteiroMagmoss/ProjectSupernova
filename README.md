@@ -37,3 +37,6 @@ através de comércio, diplomacia ou travando guerras. Após interagir com o pri
 império estelar, o tutorial será finalizado. 
 
 ## Criando uma civilização
+- Alinhamento
+- Espécie
+- Tecnologia
