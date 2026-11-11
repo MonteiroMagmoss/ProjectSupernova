@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using StarterAssets;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,11 +11,14 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject damageScreen;
     [SerializeField] int currenHealth;
 
+    StarterAssetsInputs starterAssetsInputs;
+
     const string ENEMY_TAG = "Enemy";
 
     void Awake()
     {
         currenHealth = starterHealth;
+        starterAssetsInputs = GetComponent<StarterAssetsInputs>();
     }
 
     void Start()
@@ -26,6 +30,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         if(currenHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+        if (starterAssetsInputs.shoot)
         {
             Destroy(this.gameObject);
         }
