@@ -8,11 +8,15 @@ public class Player : MonoBehaviour
     [SerializeField] int starterHealth = 100;
     [SerializeField] int damage = 10;
     [SerializeField] float damageTime = .5f;
+    [SerializeField] float fireRate = .5f;
     [SerializeField] GameObject damageScreen;
     [SerializeField] ParticleSystem fireEffect;
+
+    [SerializeField] GameObject objectTest;
     [SerializeField] int currenHealth;
 
     StarterAssetsInputs starterAssetsInputs;
+    float tempoUltimoDisparo = 0;
 
     const string ENEMY_TAG = "Enemy";
 
@@ -30,6 +34,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        tempoUltimoDisparo += Time.deltaTime;
+
         if(currenHealth <= 0)
         {
             Destroy(this.gameObject);
@@ -53,9 +59,20 @@ public class Player : MonoBehaviour
     {
         if(!starterAssetsInputs.shoot) return;
 
-        fireEffect.Play();
+        if (tempoUltimoDisparo >= fireRate)
+        {
+            fireEffect.Play();
 
-        Debug.Log("Botão pressionado!");
+            RaycastHit hit;
+
+            if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity))
+            {
+                Instantiate(objectTest, hit.point, Quaternion.identity);
+            }
+
+            Debug.Log("Botão pressionado!");
+            tempoUltimoDisparo = 0f;
+        }
     }
     void TakeDamage()
     {
