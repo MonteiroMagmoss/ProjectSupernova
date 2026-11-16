@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] int damage = 10;
     [SerializeField] float damageTime = .5f;
     [SerializeField] GameObject damageScreen;
+    [SerializeField] ParticleSystem fireEffect;
     [SerializeField] int currenHealth;
 
     StarterAssetsInputs starterAssetsInputs;
@@ -33,25 +34,34 @@ public class Player : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if (starterAssetsInputs.shoot)
-        {
-            Destroy(this.gameObject);
-        }
+        ControleDisparo();
     }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag(ENEMY_TAG))
         {
-            currenHealth -= damage;
-            Debug.Log(currenHealth);
-            damageScreen.SetActive(true);
-            StartCoroutine(DisableScreenDamage(damageTime));
+            TakeDamage();
         }
     }
     IEnumerator DisableScreenDamage(float time)
     {
         yield return new WaitForSeconds(time);
         damageScreen.SetActive(false);
+    }
+    void ControleDisparo()
+    {
+        if(!starterAssetsInputs.shoot) return;
+
+        fireEffect.Play();
+
+        Debug.Log("Botão pressionado!");
+    }
+    void TakeDamage()
+    {
+        currenHealth -= damage;
+        Debug.Log(currenHealth);
+        damageScreen.SetActive(true);
+        StartCoroutine(DisableScreenDamage(damageTime));
     }
 }
