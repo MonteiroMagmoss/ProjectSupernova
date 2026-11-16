@@ -1,4 +1,4 @@
-## SUPERNOVA
+## SUPERNOVA (ARQUIVO PRIVADO)
 
 ## Prólogo
 
