@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using StarterAssets;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class Player : MonoBehaviour
     [SerializeField] float damageTime = .5f;
     [SerializeField] float fireRate = .5f;
     [SerializeField] GameObject damageScreen;
+    [SerializeField] Slider lifeSlider;
     [SerializeField] ParticleSystem fireEffect;
 
     [SerializeField] GameObject objectTest;
-    [SerializeField] int currenHealth;
+    [SerializeField] float currenHealth;
 
     StarterAssetsInputs starterAssetsInputs;
     float tempoUltimoDisparo = 0;
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        lifeSlider.value = starterHealth;
         currenHealth = starterHealth;
         starterAssetsInputs = GetComponent<StarterAssetsInputs>();
     }
@@ -74,9 +77,10 @@ public class Player : MonoBehaviour
             tempoUltimoDisparo = 0f;
         }
     }
-    void TakeDamage()
+    public void TakeDamage()
     {
         currenHealth -= damage;
+        lifeSlider.value = currenHealth;
         Debug.Log(currenHealth);
         damageScreen.SetActive(true);
         StartCoroutine(DisableScreenDamage(damageTime));
