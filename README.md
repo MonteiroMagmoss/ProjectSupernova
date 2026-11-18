@@ -39,4 +39,5 @@ império estelar, o tutorial será finalizado.
 ## Criando uma civilização
 - Alinhamento
 - Espécie
+- Cultura
 - Tecnologia
